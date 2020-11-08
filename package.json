@@ -1,0 +1,23 @@
+{
+  "name": "godaddy-dyndns",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "bin": {
+    "gdns": "./src/cli.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "dotenv": "^8.2.0",
+    "inquirer": "^7.3.3",
+    "lodash": "^4.17.20",
+    "luxon": "^1.25.0",
+    "yargs": "^16.1.0"
+  }
+}
