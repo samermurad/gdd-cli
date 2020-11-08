@@ -1,3 +1,4 @@
 node_modules/
 .env
 dyndns.sh
+entry-point.sh

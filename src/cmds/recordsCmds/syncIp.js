@@ -55,12 +55,14 @@ exports.handler = async function(argv) {
             recordsToSync.push([argv.domain, hostName, ip])
         }
     }
+    let didUpdate = false;
     if (recordsToSync.length > 0) {
         for (const enrty of recordsToSync) {
             const [d, h, i] = enrty;
             cachedLog.log(`setting ${h}.${d} to point to ${ip}`);
             try {
             await api.setARecord(d, h, i);
+            didUpdate = true;
             } catch(error) {
                 console.log(error.response.data);
             }
@@ -68,7 +70,7 @@ exports.handler = async function(argv) {
     } else {
         console.log('Everything is up to date, no action needed');
     }
-    await notifyUser(cachedLog.messages.join('\n'))
+    if (didUpdate) await notifyUser(cachedLog.messages.join('\n'))
     // const atR = await api.getARecord(argv.domain, '@');
     // console.log(atR[0].data)
     // const atA = await api.getARecord(argv.domain, '*');
